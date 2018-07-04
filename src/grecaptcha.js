@@ -1,9 +1,8 @@
-import { polyfill } from 'es6-promise'
+//import { polyfill } from 'es6-promise'
+//import 'babel-core/register'
+import 'babel-polyfill'
 import fetch from 'isomorphic-fetch'
 import loadScript from 'load-script'
-//import { RECAPTCHA_SITE_KEY } from '../settings'
-
-//const scriptSourceUrl = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`
 
 /**
  * makeScriptSourceUrl
@@ -45,7 +44,9 @@ export const grecaptchaLoad = siteKey => new Promise((resolve, reject) => {
 				if(err) {
 					reject(err)
 				}
-				//console.log('grecaptchaLoad: ', res)
+
+				console.log('grecaptchaLoad: ', res)
+
 				scriptIsLoaded = true
 				resolve()
 			})
@@ -105,8 +106,6 @@ export const grecaptchaGetScore = async (url, options = {}, token) => {
 		body: JSON.stringify({ token }),
 	})
 
-	//console.log('grecaptcha: res', res)
-
 	if(!res) {
 		throw new Error(`[react-grecaptcha-v3] no response from ${url}`)
 	}
@@ -116,9 +115,6 @@ export const grecaptchaGetScore = async (url, options = {}, token) => {
 	}
 
 	const json = await res.json()
-
-	//console.log('gRecaptcha: json', json)
-
 	const { success, score, 'error-codes': errors } = json
 
 	if(!success) {

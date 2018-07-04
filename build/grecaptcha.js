@@ -7,7 +7,7 @@ exports.grecaptchaGetScore = exports.grecaptchaGetToken = exports.grecaptchaLoad
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _es6Promise = require('es6-promise');
+require('babel-polyfill');
 
 var _isomorphicFetch = require('isomorphic-fetch');
 
@@ -19,11 +19,9 @@ var _loadScript2 = _interopRequireDefault(_loadScript);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; } //import { polyfill } from 'es6-promise'
+//import 'babel-core/register'
 
-//import { RECAPTCHA_SITE_KEY } from '../settings'
-
-//const scriptSourceUrl = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`
 
 /**
  * makeScriptSourceUrl
@@ -67,7 +65,9 @@ var grecaptchaLoad = exports.grecaptchaLoad = function grecaptchaLoad(siteKey) {
 					if (err) {
 						reject(err);
 					}
-					//console.log('grecaptchaLoad: ', res)
+
+					console.log('grecaptchaLoad: ', res);
+
 					scriptIsLoaded = true;
 					resolve();
 				});
@@ -155,10 +155,6 @@ var grecaptchaGetScore = exports.grecaptchaGetScore = function () {
 
 					case 9:
 						json = _context.sent;
-
-
-						//console.log('gRecaptcha: json', json)
-
 						success = json.success, score = json.score, errors = json['error-codes'];
 
 						if (success) {
