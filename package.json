@@ -2,7 +2,7 @@
   "name": "react-grecaptcha-v3",
   "version": "0.0.1",
   "description": "React HOC and some utilities for Google ReCAPTHCA v3",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src --out-dir build",
