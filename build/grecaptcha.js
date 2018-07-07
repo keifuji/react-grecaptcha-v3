@@ -92,7 +92,7 @@ var grecaptchaGetToken = exports.grecaptchaGetToken = function grecaptchaGetToke
 		try {
 			grecaptcha.ready(function () {
 				grecaptcha.execute(siteKey, { action: action }).then(function (token) {
-					console.log('For testing: ', 'curl -F secret=6LftdmAUAAAAAImzXCt6PfT_XpmRN7k2raG3i0p2 -F response=' + token + ' https://www.google.com/recaptcha/api/siteverify');
+					console.log('For testing: ', 'curl -F secret=YOUR_SECRET_KEY -F response=' + token + ' https://www.google.com/recaptcha/api/siteverify');
 					resolve(token);
 				});
 			});

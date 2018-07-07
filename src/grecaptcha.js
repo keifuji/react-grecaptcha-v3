@@ -73,7 +73,7 @@ export const grecaptchaGetToken = (siteKey, action) => new Promise((resolve, rej
 				.execute(siteKey, { action }) 
 				.then(token => {
 					console.log('For testing: ', 
-						`curl -F secret=6LftdmAUAAAAAImzXCt6PfT_XpmRN7k2raG3i0p2 -F response=${token} https://www.google.com/recaptcha/api/siteverify`
+						`curl -F secret=YOUR_SECRET_KEY -F response=${token} https://www.google.com/recaptcha/api/siteverify`
 					)
 					resolve(token)
 				})
