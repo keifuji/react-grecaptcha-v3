@@ -1,5 +1,5 @@
 import { lifecycle } from 'recompose'
-export { grecaptchaLoad, grecaptchaGetToken } from './grecaptcha'
+import { grecaptchaLoad, grecaptchaGetToken } from './grecaptcha'
 
 
 const asyncSetToken = async (siteKey, action) => {

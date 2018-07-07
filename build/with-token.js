@@ -3,24 +3,10 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.grecaptchaGetToken = exports.grecaptchaLoad = undefined;
-
-var _grecaptcha = require('./grecaptcha');
-
-Object.defineProperty(exports, 'grecaptchaLoad', {
-	enumerable: true,
-	get: function get() {
-		return _grecaptcha.grecaptchaLoad;
-	}
-});
-Object.defineProperty(exports, 'grecaptchaGetToken', {
-	enumerable: true,
-	get: function get() {
-		return _grecaptcha.grecaptchaGetToken;
-	}
-});
 
 var _recompose = require('recompose');
+
+var _grecaptcha = require('./grecaptcha');
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
@@ -32,11 +18,11 @@ var asyncSetToken = function () {
 				switch (_context.prev = _context.next) {
 					case 0:
 						_context.next = 2;
-						return grecaptchaLoad(siteKey);
+						return (0, _grecaptcha.grecaptchaLoad)(siteKey);
 
 					case 2:
 						_context.next = 4;
-						return grecaptchaGetToken(siteKey, action);
+						return (0, _grecaptcha.grecaptchaGetToken)(siteKey, action);
 
 					case 4:
 						token = _context.sent;
