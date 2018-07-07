@@ -15,3 +15,14 @@ Object.keys(_grecaptcha).forEach(function (key) {
     }
   });
 });
+
+var _withToken = require('./with-token');
+
+Object.defineProperty(exports, 'withGrecaptchaToken', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_withToken).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
