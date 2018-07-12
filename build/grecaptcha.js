@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.grecaptchaGetScore = exports.grecaptchaGetToken = exports.grecaptchaLoad = exports.isGrecaptchaLoaded = undefined;
+exports.grecaptchaGetScore = exports.grecapthcaLoadAndGetToken = exports.grecaptchaGetToken = exports.grecaptchaLoad = exports.isGrecaptchaLoaded = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -103,7 +103,47 @@ var grecaptchaGetToken = exports.grecaptchaGetToken = function grecaptchaGetToke
 };
 
 /**
- * grecaptchaGetScore => getScore
+ * grecapthcaLoadAndGetToken
+ *
+ * Loads grecaptcha script and gets token from Google.
+ *
+ * @param {string} siteKey
+ * @param {string} action Action name (accepts only alphabet or '/')
+ * @return {string} token
+ */
+var grecapthcaLoadAndGetToken = exports.grecapthcaLoadAndGetToken = function () {
+	var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(siteKey, action) {
+		var token;
+		return regeneratorRuntime.wrap(function _callee$(_context) {
+			while (1) {
+				switch (_context.prev = _context.next) {
+					case 0:
+						_context.next = 2;
+						return grecaptchaLoad(siteKey);
+
+					case 2:
+						_context.next = 4;
+						return grecaptchaGetToken(siteKey, action);
+
+					case 4:
+						token = _context.sent;
+						return _context.abrupt('return', token);
+
+					case 6:
+					case 'end':
+						return _context.stop();
+				}
+			}
+		}, _callee, undefined);
+	}));
+
+	return function grecapthcaLoadAndGetToken(_x, _x2) {
+		return _ref.apply(this, arguments);
+	};
+}();
+
+/**
+ * grecaptchaGetScore
  *
  * Send token to your server and get score.
  *
@@ -115,15 +155,15 @@ var grecaptchaGetToken = exports.grecaptchaGetToken = function grecaptchaGetToke
  * @returns score
  */
 var grecaptchaGetScore = exports.grecaptchaGetScore = function () {
-	var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(url) {
+	var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(url) {
 		var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 		var token = arguments[2];
 		var res, json, success, score, errors;
-		return regeneratorRuntime.wrap(function _callee$(_context) {
+		return regeneratorRuntime.wrap(function _callee2$(_context2) {
 			while (1) {
-				switch (_context.prev = _context.next) {
+				switch (_context2.prev = _context2.next) {
 					case 0:
-						_context.next = 2;
+						_context2.next = 2;
 						return (0, _isomorphicFetch2.default)(url, _extends({
 							mode: 'cors',
 							method: 'POST'
@@ -132,10 +172,10 @@ var grecaptchaGetScore = exports.grecaptchaGetScore = function () {
 						}));
 
 					case 2:
-						res = _context.sent;
+						res = _context2.sent;
 
 						if (res) {
-							_context.next = 5;
+							_context2.next = 5;
 							break;
 						}
 
@@ -143,22 +183,22 @@ var grecaptchaGetScore = exports.grecaptchaGetScore = function () {
 
 					case 5:
 						if (res.ok) {
-							_context.next = 7;
+							_context2.next = 7;
 							break;
 						}
 
 						throw new Error('[react-grecaptcha-v3] failed to fetch: ' + res.status + ' ' + res.statusText);
 
 					case 7:
-						_context.next = 9;
+						_context2.next = 9;
 						return res.json();
 
 					case 9:
-						json = _context.sent;
+						json = _context2.sent;
 						success = json.success, score = json.score, errors = json['error-codes'];
 
 						if (success) {
-							_context.next = 14;
+							_context2.next = 14;
 							break;
 						}
 
@@ -166,17 +206,17 @@ var grecaptchaGetScore = exports.grecaptchaGetScore = function () {
 						throw new Error('[react-grecaptcha-v3] failed to get score: ' + (errors && errors[0]));
 
 					case 14:
-						return _context.abrupt('return', score);
+						return _context2.abrupt('return', score);
 
 					case 15:
 					case 'end':
-						return _context.stop();
+						return _context2.stop();
 				}
 			}
-		}, _callee, undefined);
+		}, _callee2, undefined);
 	}));
 
-	return function grecaptchaGetScore(_x2) {
-		return _ref.apply(this, arguments);
+	return function grecaptchaGetScore(_x4) {
+		return _ref2.apply(this, arguments);
 	};
 }();
