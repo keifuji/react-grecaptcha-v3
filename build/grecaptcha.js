@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.grecaptchaGetScore = exports.grecapthcaLoadAndGetToken = exports.grecaptchaGetToken = exports.grecaptchaLoad = exports.isGrecaptchaLoaded = undefined;
+exports.grecaptchaGetScore = exports.grecaptchaLoadAndGetToken = exports.grecaptchaGetToken = exports.grecaptchaLoad = exports.isGrecaptchaLoaded = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -111,7 +111,7 @@ var grecaptchaGetToken = exports.grecaptchaGetToken = function grecaptchaGetToke
  * @param {string} action Action name (accepts only alphabet or '/')
  * @return {string} token
  */
-var grecapthcaLoadAndGetToken = exports.grecapthcaLoadAndGetToken = function () {
+var grecaptchaLoadAndGetToken = exports.grecaptchaLoadAndGetToken = function () {
 	var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(siteKey, action) {
 		var token;
 		return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -137,7 +137,7 @@ var grecapthcaLoadAndGetToken = exports.grecapthcaLoadAndGetToken = function () 
 		}, _callee, undefined);
 	}));
 
-	return function grecapthcaLoadAndGetToken(_x, _x2) {
+	return function grecaptchaLoadAndGetToken(_x, _x2) {
 		return _ref.apply(this, arguments);
 	};
 }();

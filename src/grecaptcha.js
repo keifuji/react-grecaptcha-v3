@@ -94,7 +94,7 @@ export const grecaptchaGetToken = (siteKey, action) => new Promise((resolve, rej
  * @param {string} action Action name (accepts only alphabet or '/')
  * @return {string} token
  */
-export const grecapthcaLoadAndGetToken = async (siteKey, action) => {
+export const grecaptchaLoadAndGetToken = async (siteKey, action) => {
 	await grecaptchaLoad(siteKey)
 	const token = await grecaptchaGetToken(siteKey, action)
 	return token
