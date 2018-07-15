@@ -103,7 +103,7 @@ var grecaptchaGetToken = exports.grecaptchaGetToken = function grecaptchaGetToke
 };
 
 /**
- * grecapthcaLoadAndGetToken
+ * grecaptchaLoadAndGetToken
  *
  * Loads grecaptcha script and gets token from Google.
  *
@@ -118,23 +118,29 @@ var grecaptchaLoadAndGetToken = exports.grecaptchaLoadAndGetToken = function () 
 			while (1) {
 				switch (_context.prev = _context.next) {
 					case 0:
-						_context.next = 2;
+						_context.prev = 0;
+						_context.next = 3;
 						return grecaptchaLoad(siteKey);
 
-					case 2:
-						_context.next = 4;
+					case 3:
+						_context.next = 5;
 						return grecaptchaGetToken(siteKey, action);
 
-					case 4:
+					case 5:
 						token = _context.sent;
 						return _context.abrupt('return', token);
 
-					case 6:
+					case 9:
+						_context.prev = 9;
+						_context.t0 = _context['catch'](0);
+						throw _context.t0;
+
+					case 12:
 					case 'end':
 						return _context.stop();
 				}
 			}
-		}, _callee, undefined);
+		}, _callee, undefined, [[0, 9]]);
 	}));
 
 	return function grecaptchaLoadAndGetToken(_x, _x2) {

@@ -86,7 +86,7 @@ export const grecaptchaGetToken = (siteKey, action) => new Promise((resolve, rej
 
 
 /**
- * grecapthcaLoadAndGetToken
+ * grecaptchaLoadAndGetToken
  *
  * Loads grecaptcha script and gets token from Google.
  *
@@ -95,9 +95,13 @@ export const grecaptchaGetToken = (siteKey, action) => new Promise((resolve, rej
  * @return {string} token
  */
 export const grecaptchaLoadAndGetToken = async (siteKey, action) => {
-	await grecaptchaLoad(siteKey)
-	const token = await grecaptchaGetToken(siteKey, action)
-	return token
+	try {
+		await grecaptchaLoad(siteKey)
+		const token = await grecaptchaGetToken(siteKey, action)
+		return token
+	} catch(e) {
+		throw e
+	}
 }
 
 
