@@ -19,9 +19,7 @@ var _loadScript2 = _interopRequireDefault(_loadScript);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; } //import { polyfill } from 'es6-promise'
-//import 'babel-core/register'
-
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 /**
  * makeScriptSourceUrl
@@ -66,7 +64,7 @@ var grecaptchaLoad = exports.grecaptchaLoad = function grecaptchaLoad(siteKey) {
 						reject(err);
 					}
 
-					console.log('grecaptchaLoad: ', res);
+					//console.log('grecaptchaLoad: ', res)
 
 					scriptIsLoaded = true;
 					resolve();
@@ -92,7 +90,9 @@ var grecaptchaGetToken = exports.grecaptchaGetToken = function grecaptchaGetToke
 		try {
 			grecaptcha.ready(function () {
 				grecaptcha.execute(siteKey, { action: action }).then(function (token) {
-					console.log('For testing: ', 'curl -F secret=YOUR_SECRET_KEY -F response=' + token + ' https://www.google.com/recaptcha/api/siteverify');
+					//console.log('For testing: ', 
+					//	`curl -F secret=YOUR_SECRET_KEY -F response=${token} https://www.google.com/recaptcha/api/siteverify`
+					//)
 					resolve(token);
 				});
 			});

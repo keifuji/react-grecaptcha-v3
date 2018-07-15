@@ -1,5 +1,3 @@
-//import { polyfill } from 'es6-promise'
-//import 'babel-core/register'
 import 'babel-polyfill'
 import fetch from 'isomorphic-fetch'
 import loadScript from 'load-script'
@@ -45,7 +43,7 @@ export const grecaptchaLoad = siteKey => new Promise((resolve, reject) => {
 					reject(err)
 				}
 
-				console.log('grecaptchaLoad: ', res)
+				//console.log('grecaptchaLoad: ', res)
 
 				scriptIsLoaded = true
 				resolve()
@@ -72,9 +70,9 @@ export const grecaptchaGetToken = (siteKey, action) => new Promise((resolve, rej
 			grecaptcha
 				.execute(siteKey, { action }) 
 				.then(token => {
-					console.log('For testing: ', 
-						`curl -F secret=YOUR_SECRET_KEY -F response=${token} https://www.google.com/recaptcha/api/siteverify`
-					)
+					//console.log('For testing: ', 
+					//	`curl -F secret=YOUR_SECRET_KEY -F response=${token} https://www.google.com/recaptcha/api/siteverify`
+					//)
 					resolve(token)
 				})
 		})
