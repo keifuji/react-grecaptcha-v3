@@ -118,29 +118,32 @@ var grecaptchaLoadAndGetToken = exports.grecaptchaLoadAndGetToken = function () 
 			while (1) {
 				switch (_context.prev = _context.next) {
 					case 0:
-						_context.prev = 0;
-						_context.next = 3;
+						_context.next = 2;
 						return grecaptchaLoad(siteKey);
 
-					case 3:
-						_context.next = 5;
+					case 2:
+						_context.next = 4;
 						return grecaptchaGetToken(siteKey, action);
 
-					case 5:
+					case 4:
 						token = _context.sent;
+
+						if (token) {
+							_context.next = 7;
+							break;
+						}
+
+						throw new Error('[react-grecaptcha-v3] no token received for ' + action);
+
+					case 7:
 						return _context.abrupt('return', token);
 
-					case 9:
-						_context.prev = 9;
-						_context.t0 = _context['catch'](0);
-						throw _context.t0;
-
-					case 12:
+					case 8:
 					case 'end':
 						return _context.stop();
 				}
 			}
-		}, _callee, undefined, [[0, 9]]);
+		}, _callee, undefined);
 	}));
 
 	return function grecaptchaLoadAndGetToken(_x, _x2) {

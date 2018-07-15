@@ -95,13 +95,12 @@ export const grecaptchaGetToken = (siteKey, action) => new Promise((resolve, rej
  * @return {string} token
  */
 export const grecaptchaLoadAndGetToken = async (siteKey, action) => {
-	try {
-		await grecaptchaLoad(siteKey)
-		const token = await grecaptchaGetToken(siteKey, action)
-		return token
-	} catch(e) {
-		throw e
+	await grecaptchaLoad(siteKey)
+	const token = await grecaptchaGetToken(siteKey, action)
+	if(!token) {
+		throw new Error(`[react-grecaptcha-v3] no token received for ${action}`)
 	}
+	return token
 }
 
 
