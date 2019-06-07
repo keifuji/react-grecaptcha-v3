@@ -43,8 +43,6 @@ export const grecaptchaLoad = siteKey => new Promise((resolve, reject) => {
 					reject(err)
 				}
 
-				//console.log('grecaptchaLoad: ', res)
-
 				scriptIsLoaded = true
 				resolve()
 			})
@@ -140,4 +138,3 @@ export const grecaptchaGetScore = async (url, options = {}, token) => {
 	}
 	return score
 }
-

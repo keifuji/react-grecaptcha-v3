@@ -1,13 +1,23 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var _exportNames = {
+  withGrecaptchaToken: true
+};
+Object.defineProperty(exports, "withGrecaptchaToken", {
+  enumerable: true,
+  get: function get() {
+    return _withToken["default"];
+  }
+});
 
-var _grecaptcha = require('./grecaptcha');
+var _grecaptcha = require("./grecaptcha");
 
 Object.keys(_grecaptcha).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
@@ -16,13 +26,6 @@ Object.keys(_grecaptcha).forEach(function (key) {
   });
 });
 
-var _withToken = require('./with-token');
+var _withToken = _interopRequireDefault(require("./with-token"));
 
-Object.defineProperty(exports, 'withGrecaptchaToken', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_withToken).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
